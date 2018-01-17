@@ -129,7 +129,8 @@ var tweetSandler = function () {
       for (var i = 0; i < tweets.statuses.length; i++) {
           all_tweets.push({
               "screen_name": tweets.statuses[i].user.screen_name,
-              "location": tweets.statuses[i].user.location
+              "location": tweets.statuses[i].user.location,
+              "text": tweets.statuses[i].text
           })
       };
 
@@ -152,7 +153,7 @@ var tweetSandler = function () {
 
   //============POST TWEET ===========================================
   //Test case for tweeting out 
-  client.post('statuses/update', {status: "Yo @" + selected_tweet.screen_name + " " + phrase + " #TRUMP"}, function(error, tweet, response) {
+  client.post('statuses/update', {status: "@" + selected_tweet.screen_name + " " + selected_tweet.text + " " + phrase + " #TRUMP"}, function(error, tweet, response) {
     if (!error) {
       console.log(tweet);
     }
