@@ -21,7 +21,12 @@ var Twitter = require('twitter');
 var fs = require('fs');
 
 //==================API KEYS ==========================
-
+// var client = new Twitter({
+//     consumer_key: process.env.TWITTER_CONSUMER_KEY,
+//     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+//     access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+//     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+//   });
 
 var client = new Twitter({
     consumer_key: 'WsAZ9ktkt8YtpCvckYO9Q3zGs',
@@ -120,17 +125,17 @@ var phrase = chooseRandom(otherArray)
 
 var tweetSandler = function () {
 //====================QUERY =========================================
-  var params = {q: '#MAGA', count: 50};
-  client.get('search/tweets', params, function(error, tweets, response) {
+  var params = {screen_name: 'realdonaldtrump', count: 50};
+  client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (!error) {
       console.log(tweets);
 
       var all_tweets = new Array();
-      for (var i = 0; i < tweets.statuses.length; i++) {
+      for (var i = 0; i < tweets.length; i++) {
           all_tweets.push({
-              "screen_name": tweets.statuses[i].user.screen_name,
-              "location": tweets.statuses[i].user.location,
-              "text": tweets.statuses[i].text
+              "screen_name": tweets[i].user.screen_name,
+              "location": tweets[i].user.location,
+              "text": tweets[i].text
           })
       };
 
@@ -153,7 +158,7 @@ var tweetSandler = function () {
 
   //============POST TWEET ===========================================
   //Test case for tweeting out 
-  client.post('statuses/update', {status: "@" + selected_tweet.screen_name + " " + selected_tweet.text + " " + phrase + " #TRUMP"}, function(error, tweet, response) {
+  client.post('statuses/update', {status: selected_tweet.screen_name + " " + selected_tweet.text + " " + phrase + " #TRUMP"}, function(error, tweet, response) {
     if (!error) {
       console.log(tweet);
     }
@@ -170,3 +175,4 @@ var tweetSandler = function () {
 }
 
 tweetSandler();
+setInterval(tweetSandler, 600000)
