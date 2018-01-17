@@ -21,19 +21,19 @@ var Twitter = require('twitter');
 var fs = require('fs');
 
 //==================API KEYS ==========================
-// var client = new Twitter({
-//     consumer_key: process.env.TWITTER_CONSUMER_KEY,
-//     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-//     access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-//     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-//   });
-
 var client = new Twitter({
-    consumer_key: 'WsAZ9ktkt8YtpCvckYO9Q3zGs',
-    consumer_secret: 'T4W1YzPf8AdVu15aD906ngHp7bYfPMlZTe4CszXlEFe8isbAaO',
-    access_token_key: '902634864226295811-tUiSdQIThSwnKb6HCjlohML33NyO4Dv',
-    access_token_secret: 'va6wsVeUg8QNNFs3gmjsJNZ3xc8kH4NGxpMz1ILBxHP6v'
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
   });
+
+// var client = new Twitter({
+//     consumer_key: 'WsAZ9ktkt8YtpCvckYO9Q3zGs',
+//     consumer_secret: 'T4W1YzPf8AdVu15aD906ngHp7bYfPMlZTe4CszXlEFe8isbAaO',
+//     access_token_key: '902634864226295811-tUiSdQIThSwnKb6HCjlohML33NyO4Dv',
+//     access_token_secret: 'va6wsVeUg8QNNFs3gmjsJNZ3xc8kH4NGxpMz1ILBxHP6v'
+//   });
    
 // Tweet Options 
 var all_tweets = [];
