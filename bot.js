@@ -10,11 +10,6 @@
 
 //=================API KEYS ========================
 
-//Access Token	902634864226295811-tUiSdQIThSwnKb6HCjlohML33NyO4Dv
-//Access Token Secret	va6wsVeUg8QNNFs3gmjsJNZ3xc8kH4NGxpMz1ILBxHP6v
-//Consumer Key (API Key)	WsAZ9ktkt8YtpCvckYO9Q3zGs
-//Consumer Secret (API Secret)	T4W1YzPf8AdVu15aD906ngHp7bYfPMlZTe4CszXlEFe8isbAaO
-
 //=================REQUIREMENTS======================
 
 var Twitter = require('twitter');
@@ -27,13 +22,6 @@ var client = new Twitter({
     access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
   });
-
-// var client = new Twitter({
-//     consumer_key: 'WsAZ9ktkt8YtpCvckYO9Q3zGs',
-//     consumer_secret: 'T4W1YzPf8AdVu15aD906ngHp7bYfPMlZTe4CszXlEFe8isbAaO',
-//     access_token_key: '902634864226295811-tUiSdQIThSwnKb6HCjlohML33NyO4Dv',
-//     access_token_secret: 'va6wsVeUg8QNNFs3gmjsJNZ3xc8kH4NGxpMz1ILBxHP6v'
-//   });
    
 // Tweet Options 
 var all_tweets = [];
@@ -158,7 +146,7 @@ var tweetSandler = function () {
 
   //============POST TWEET ===========================================
   //Test case for tweeting out 
-  client.post('statuses/update', {status: selected_tweet.screen_name + " " + selected_tweet.text + " " + phrase + " #TRUMP"}, function(error, tweet, response) {
+  client.post('statuses/update', {status: "RT " + selected_tweet.screen_name + " " + selected_tweet.text + " " + phrase + " #TRUMP"}, function(error, tweet, response) {
     if (!error) {
       console.log(tweet);
     }
@@ -175,4 +163,4 @@ var tweetSandler = function () {
 }
 
 tweetSandler();
-setInterval(tweetSandler, 600000)
+setInterval(tweetSandler, 1800000)
