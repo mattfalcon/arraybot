@@ -163,4 +163,4 @@ var tweetSandler = function () {
 }
 
 tweetSandler();
-setInterval(tweetSandler, 1800000)
+setInterval(tweetSandler, 14400000)
